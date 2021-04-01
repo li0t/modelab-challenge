@@ -1,0 +1,137 @@
+$print-font-size-base: 7pt
+$black: #000000
+$white: #ffffff
+
+@media print 
+  html,
+  body
+    width: auto !important
+    height: auto !important
+    overflow: hidden !important
+    background: $white
+    color: $black !important // Black prints faster: h5bp.com/s
+    font-family: sans-serif
+    padding: 0.5cm
+    
+    #app
+      width: auto !important
+      height: auto !important
+      overflow: hidden !important
+
+      > div:not(#view-container)
+        display: none
+
+      #view-container
+        padding: 0
+        overflow: hidden !important
+        > .view
+          > div:not(.print)
+            display: none
+        
+    &,
+    table tr td,
+    table tr th,
+    p 
+      font-size: $print-font-size-base
+
+    h4 
+      font-size: 10pt
+      font-weight: bolder
+    
+    h5 
+      font-size: $print-font-size-base
+      font-weight: bolder
+
+    .text-small 
+      &,
+      * 
+        font-size: 6pt
+
+  section,
+  p,
+  table,
+  thead,
+  tbody,
+  tr,
+  td,
+  th,
+  .header
+    page-break-inside: avoid !important
+  
+  a 
+    &,
+    &:visited 
+      text-decoration: underline
+
+    &[href]::after 
+      content: ' (' attr(href) ')'
+
+    // Don't show links that are fragment identifiers,
+    // or use the `javascript:` pseudo protocol
+    &[href^='#']::after,
+    &[href^='javascript:']::after 
+      content: ''
+
+  abbr[title]:after 
+    content: ' (' attr(title) ')'
+
+  pre,
+  blockquote 
+    border: 1px solid #999
+    page-break-inside: avoid
+
+  table 
+    &,
+    &.table 
+      margin-bottom: 2pt
+
+      thead 
+        display: table-header-group // h5bp.com/t
+
+  tr,
+  img 
+    page-break-inside: avoid
+
+  img 
+    max-width: 100% !important
+  
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 
+    margin: 4pt 0 2pt
+    page-break-after: avoid
+    orphans: 3
+    widows: 3
+
+  .navbar 
+    display: none
+
+  .btn,
+  .dropup > .btn 
+    > .caret 
+      border-top-color: #000 !important
+  
+  .label 
+    border: 1px solid #000
+
+  .table 
+    border-collapse: collapse !important
+    display: table
+
+    tbody 
+      tr 
+        td,
+        th 
+          background-color: #fff !important
+          padding: 1pt
+          padding-left: 0
+        
+  .table-bordered 
+    th,
+    td 
+      border: 1px solid #ddd !important
+

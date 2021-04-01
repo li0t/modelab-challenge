@@ -1,0 +1,10 @@
+{
+  "name": "Modelab-Challenge",
+  "short_name": "Modelab-Challenge",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
+  "theme_color": "#2079C9",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}

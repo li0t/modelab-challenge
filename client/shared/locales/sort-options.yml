@@ -1,0 +1,9 @@
+es:
+  CREATED_AT_DES: Más nuevo
+  CREATED_AT_ASC: Más antiguo
+  UPDATED_AT_DES: Actualizado reciente
+  UPDATED_AT_ASC: Actualizado antiguo
+  CODE_DES: Código (Z-A)
+  CODE_ASC: Código (A-Z)
+  NAME_DES: Nombre (Z-A)
+  NAME_ASC: Nombre (A-Z)

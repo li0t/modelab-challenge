@@ -1,0 +1,12 @@
+{
+  "extends":[ 
+    "../.eslintrc",
+    "plugin:vue/recommended"
+  ],
+  "plugins": ["vue"],
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "sourceType": "module",
+    "ecmaVersion": 8
+  }
+}
