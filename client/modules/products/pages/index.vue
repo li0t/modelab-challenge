@@ -15,13 +15,16 @@ es:
     product(
       v-for="product in products"
       :product="product"
+      :key="product.id"
       )
  
 </template>
 
 <script>
-import { mapModuleState } from '@/shared/services/map-store-module';
 import Product from '../components/Product';
+
+import { mapModuleActions, mapModuleState } from '@/shared/services/map-store-module';
+import { moduleName as discountsModuleName } from '@/modules/cart/store/modules/discounts';
 
 export default {
   name: 'ProductsIndex',
@@ -38,14 +41,17 @@ export default {
   },
 
   computed: {
-    ...mapModuleState({})
+    ...mapModuleState(discountsModuleName, ['discounts'])
   },
 
   async created() {
+    await this.fetchDiscounts();
     await this.fetchProducts();
   },
 
   methods: {
+    ...mapModuleActions(discountsModuleName, ['fetchDiscounts']),
+
     async fetchProducts() {
       this.fetching = true;
 
