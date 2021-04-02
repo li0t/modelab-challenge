@@ -1,5 +1,6 @@
 <template lang="pug">
 #app
+  cart-sidebar
   navbar
 
   view-container
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+import CartSidebar from '@/modules/cart/components/CartSidebar';
 import ViewContainer from './core/components/ViewContainer';
 import AppFooter from './core/components/AppFooter';
 import Navbar from './core/components/Navbar';
@@ -19,6 +21,7 @@ export default {
 
   components: {
     ViewContainer,
+    CartSidebar,
     AppFooter,
     Navbar
   },
