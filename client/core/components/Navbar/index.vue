@@ -2,10 +2,14 @@
 #navbar.ui.top.fixed.menu.attached
   navbar-logo
   navbar-menu
+  
+  .right.menu
+    cart-icon
 
 </template>
 
 <script>
+import CartIcon from '@/modules/cart/components/CartIcon';
 import NavbarMenu from './components/NavbarMenu';
 import NavbarLogo from './components/NavbarLogo';
 
@@ -14,7 +18,8 @@ export default {
 
   components: {
     NavbarMenu,
-    NavbarLogo
+    NavbarLogo,
+    CartIcon
   }
 };
 </script>
