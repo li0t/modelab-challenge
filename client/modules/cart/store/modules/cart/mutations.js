@@ -6,13 +6,13 @@ import MT from '@/store/mutation-types';
 import getNewProduct from './services/get-new-product';
 
 export default {
-  [MT.PUSH_PRODUCT](state, product) {
+  [MT.ADD_PRODUCT](state, product) {
     const newProduct = getNewProduct(product);
 
     state.products.push(newProduct);
   },
 
-  [MT.SPLICE_PRODUCT](state, productId) {
+  [MT.REMOVE_PRODUCT](state, productId) {
     const products = state.products;
 
     const productIndex = products.findIndex(prod => prod.id === productId);

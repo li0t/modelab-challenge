@@ -1,19 +1,22 @@
 /**
- * @module cart/store/actions
+ * @module cart/store/modules/cart/actions
  */
 
 import MT from '@/store/mutation-types';
-import getProductsDiscounts from './services/get-products-discounts';
+import getBestDiscount from './services/get-best-discount';
+
+import { moduleName as discountsModuleName } from '../discounts';
+
 
 export default {
-  async pushProduct({ commit, dispatch }, product) {
-    commit(MT.PUSH_PRODUCT, product);
+  async addProduct({ commit, dispatch }, product) {
+    commit(MT.ADD_PRODUCT, product);
 
     await dispatch('refreshCart');
   },
 
-  async spliceProduct({ commit, dispatch }, productId) {
-    commit(MT.SPLICE_PRODUCT, productId);
+  async removeProduct({ commit, dispatch }, productId) {
+    commit(MT.REMOVE_PRODUCT, productId);
 
     await dispatch('refreshCart');
   },
@@ -25,9 +28,9 @@ export default {
   },
 
   async refreshCart({ commit, state, rootState }) {
-    const discounts = rootState["discounts"].discounts;
+    const discounts = rootState[discountsModuleName].discounts;
     
-    const { discountAlternative, bestDiscount } = getProductsDiscounts(discounts, state.products);
+    const { discountAlternative, bestDiscount } = getBestDiscount(discounts, state.products);
 
     commit(MT.UPDATE_DISCOUNT, bestDiscount);
     commit(MT.UPDATE_DISCOUNT_ALTERNATIVE, discountAlternative);
