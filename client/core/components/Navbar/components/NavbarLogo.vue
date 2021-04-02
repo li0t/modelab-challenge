@@ -6,7 +6,7 @@ router-link.ui.header.vertically.fitted.item(to="/")
 <script>
 export default {
   name: 'NavbarLogo'
-}
+};
 </script>
 
 <style lang="sass" scoped>

@@ -3,7 +3,7 @@
  *
  * @module core/services/plugins
  */
-import plugins from '../configs/plugins' 
+import plugins from '../configs/plugins';
 import VueAxios from 'vue-axios';
 import axios from './axios';
 import Vue from 'vue';

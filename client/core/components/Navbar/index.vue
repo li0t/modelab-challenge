@@ -9,16 +9,12 @@
 import NavbarMenu from './components/NavbarMenu';
 import NavbarLogo from './components/NavbarLogo';
 
-
 export default {
   name: 'TheNavbar',
 
   components: {
     NavbarMenu,
     NavbarLogo
-  },
-
-  computed: {
   }
 };
 </script>

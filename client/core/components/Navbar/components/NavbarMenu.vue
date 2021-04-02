@@ -6,8 +6,6 @@ es:
 <template lang="pug">
 .left.menu#navbar-menu()
 
-
-
 </template>
 
 <script>
