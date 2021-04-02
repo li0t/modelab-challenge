@@ -3,8 +3,9 @@
  */
 
 import getProductsDiscounts from './get-products-discounts';
-import getProductsOfBrand from './get-products-of-brand';
 import getProductsSubtotal from './get-products-subtotal';
+import getProductsOfBrand from './get-products-of-brand';
+import getNewDiscount from './get-new-discount';
 
 /**
  * Calculates the best discount and the best alternative discount
@@ -15,15 +16,8 @@ import getProductsSubtotal from './get-products-subtotal';
  * @returns {Object} The best discount and alternative discount.
  */
 export default function getBestDiscount(discountsList, products) {
-  const discountAlternative = {
-    brand: null,
-    discount: 0
-  };
-
-  const bestDiscount = {
-    brand: null,
-    discount: 0
-  };
+  const discountAlternative = getNewDiscount();
+  const bestDiscount = getNewDiscount();
 
   const productsDiscounts = getProductsDiscounts(discountsList, products);
 
@@ -40,9 +34,12 @@ export default function getBestDiscount(discountsList, products) {
     if (meetsThreshold) {
       bestDiscount.brand = discount.brand;
       bestDiscount.amount = discount.amount;
+      bestDiscount.threshold = discount.threshold;
     } else {
       discountAlternative.brand = discount.brand;
       discountAlternative.amount = discount.amount;
+      discountAlternative.threshold = discount.threshold;
+      discountAlternative.missing = discount.threshold - brandSubtotal;
     }
   }
 
