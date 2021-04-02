@@ -1,20 +1,29 @@
+/**
+ * @module cart/store/modules/cart
+ */
+
 import mutations from './mutations';
 import actions from './actions';
-import getters from './getters';
 
-export const moduleName = 'cart';
+export const moduleName = 'CART';
 
 export default {
   mutations,
   actions,
-  getters,
 
   namespaced: true,
 
   state() {
     return {
-      discountAlternative: null,
-      discount: null,
+      discountAlternative: {
+        brand: null,
+        amount: 0
+      },
+
+      discount: {
+        brand: null,
+        amount: 0
+      },
 
       products: [],
       subtotal: 0,
