@@ -1,4 +1,8 @@
 /**
+ * @module cart/store/modules/cart/services/get-products-subtotal
+ */
+
+/**
  * Sums each product subtotal.
  *
  * @param {Object[]} products A list of products.

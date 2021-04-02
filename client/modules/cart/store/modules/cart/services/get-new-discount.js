@@ -1,4 +1,8 @@
 /**
+ * @module cart/store/modules/cart/services/get-new-discount
+ */
+
+/**
  * Builds a discount object to store in the cart
  * renaming the "discount" attribute to "amount". 
  * 

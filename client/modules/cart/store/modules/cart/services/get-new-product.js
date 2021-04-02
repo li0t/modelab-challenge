@@ -1,4 +1,8 @@
 /**
+ * @module cart/store/modules/cart/services/get-new-product
+ */
+
+/**
  * Builds a product to store in the cart
  * with the product attributes plus a qty
  * and a subtotal.

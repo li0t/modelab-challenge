@@ -1,3 +1,7 @@
+/**
+ * @module cart/store/modules/cart/services/get-best-discount
+ */
+
 import getProductsDiscounts from './get-products-discounts';
 import getProductsOfBrand from './get-products-of-brand';
 import getProductsSubtotal from './get-products-subtotal';

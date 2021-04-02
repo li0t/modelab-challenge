@@ -1,5 +1,8 @@
-import getNewDiscount from "./get-new-discount";
+/**
+ * @module cart/store/modules/cart/services/get-products-discounts
+ */
 
+import getNewDiscount from "./get-new-discount";
 
 /**
  * Filters the brands discounts present in the products list.

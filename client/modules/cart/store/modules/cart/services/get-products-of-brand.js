@@ -1,4 +1,8 @@
 /**
+ * @module cart/store/modules/cart/services/get-products-of-brand
+ */
+
+/**
  * Filters all products of a given brand.
  * 
  * @param {Object[]} products A list of products. 
