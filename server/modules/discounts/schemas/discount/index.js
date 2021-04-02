@@ -1,29 +1,18 @@
 const options = require('../../../../shared/mixins/options');
 
-module.exports = (Schema) => {
+module.exports = Schema => {
   const content = {
-    id: {
-      type: Number,
-      required: true
-    },
-
     brand: {
       type: String,
       required: true
     },
 
-    description: {
-      type: String,
-      required: true,
-      index: true
-    },
-
-    image: {
-      type: String,
+    threshold: {
+      type: Number,
       required: true
     },
 
-    price: {
+    discount: {
       type: Number,
       required: true
     }
