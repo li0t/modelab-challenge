@@ -1,6 +1,8 @@
 <i18n>
 es:
-
+  DELIVERY: Despacho
+  PICKUP: Retiro
+  ADD_TO_CART: Agregar
 
 </i18n>
 
@@ -18,36 +20,44 @@ es:
 
     .labels.delivery
       .blue.icon.label 
-        i.truck.icon
+        i.fas.fa-truck.icon
         | {{ $t('DELIVERY')}}
       .orange.icon.label
-        i.warehouse.icon
+        i.fas.fa-warehouse.icon
         | {{ $t('PICKUP')}}
 
     .actions
-      button.add-to-cart.button(
-        v-if="qty === 0"
-        @click="addToCart()"
+      button.push-product.button(
+        v-if="cartProductQty === 0"
+        @click="addProduct(product)"
         )
+        | {{ $t('ADD_TO_CART')}}
 
       .buttons.edit-buttons(
         v-else
         )
 
-        button.remove-qty.button(
-          @click="addProduct()"
-        )
+        button.icon.button(
+          @click="updateQty(cartProductQty - 1)"
+          )
+          i.fas.fa-minus.icon
 
-        .counter {{ qty }}
 
-        button.add-qty.button(
-          @click="removeProduct()"
-        )
+        .counter {{ cartProductQty }}
+
+        button.button(
+          @click="updateQty(cartProductQty + 1)"
+          )
+          i.fas.fa-plus.icon
+
         
  
 </template>
 
 <script>
+import { mapModuleActions, mapModuleState } from '@/shared/services/map-store-module';
+import { moduleName as cartModuleName } from '@/modules/cart/store/modules/cart';
+
 export default {
   name: 'Products',
 
@@ -64,19 +74,35 @@ export default {
     };
   },
 
-  computed: {},
+  computed: {
+    ...mapModuleState(cartModuleName, { cartProducts: 'products' }),
+
+    cartProductQty() {
+      return this.cartProducts.length && this.getCartProductQty();
+    }
+  },
 
   methods: {
-    addToCart() {
-      this.qty = 1;
+    ...mapModuleActions(cartModuleName, ['addProduct', 'removeProduct', 'updateProdQty']),
+
+    getCartProductQty() {
+      for (const product of this.cartProducts) {
+        if (product.id === this.product.id) {
+          return product.qty;
+        }
+      }
+
+      return 0;
     },
 
-    addProduct() {
-      this.qty += 1;
-    },
+    async updateQty(newQty) {
+      const productId = this.product.id;
 
-    removeProduct() {
-      this.qty -= 1;
+      if (newQty <= 0) {
+        await this.removeProduct(productId);
+      } else {
+        await this.updateProdQty({ productId, qty: newQty });
+      }
     }
   }
 };
