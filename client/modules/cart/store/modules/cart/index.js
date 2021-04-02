@@ -17,6 +17,7 @@ export default {
     return {
       discountAlternative: {
         brand: null,
+        missing: 0,
         amount: 0
       },
 
