@@ -49,8 +49,6 @@ es:
           @click="updateQty(cartProductQty + 1)"
           )
           i.fas.fa-plus.icon
-
-        
  
 </template>
 
@@ -59,7 +57,7 @@ import { mapModuleActions, mapModuleState } from '@/shared/services/map-store-mo
 import { moduleName as cartModuleName } from '@/modules/cart/store/modules/cart';
 
 export default {
-  name: 'Products',
+  name: 'Product',
 
   props: {
     product: {
