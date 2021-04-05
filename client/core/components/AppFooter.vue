@@ -28,10 +28,12 @@ export default {
   right: 0
   left: 0
   flex: 0
+  min-height: 5vh
+  max-height: 5vh
 
   pre
     border-top: 1px solid rgba(0, 0, 0, 0.15)
-    padding: 0 0.5rem
+    padding: 0.5rem 1rem
     margin: 0
 
     code
