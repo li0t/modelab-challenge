@@ -32,8 +32,8 @@ export default {
   flex: 0
   min-height: 5vh
   max-height: 5vh
+  border-bottom: 0
 
-
-  &.attached
-    border-bottom: 0
+  .right.menu
+    padding-right: 100px
 </style>
