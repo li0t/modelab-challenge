@@ -51,6 +51,14 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
-.cart-icon
-  background-color: #0C346B;
+.cart-icon.link.item
+  background-color: #0e3d69
+
+  .icon
+    color: #F7BF16
+    font-size: 1.5em
+
+  .ui.circular.label
+    background-color: #F7BF16
+    color: #0C346B
 </style>
