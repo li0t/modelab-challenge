@@ -7,7 +7,7 @@ const serverDir = path.join(process.cwd(), 'server');
 chai.use(chaiHttp);
 let req;
 
-module.exports(() => {
+module.exports = async () => {
   if (!req) {
     const app = await require(path.join(serverDir, 'index'));
 
@@ -15,4 +15,4 @@ module.exports(() => {
   }
 
   return req;
-});
+};
