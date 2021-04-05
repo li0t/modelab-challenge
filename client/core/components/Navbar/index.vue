@@ -30,6 +30,9 @@ export default {
   position: static
   z-index: 103
   flex: 0
+  min-height: 5vh
+  max-height: 5vh
+
 
   &.attached
     border-bottom: 0
