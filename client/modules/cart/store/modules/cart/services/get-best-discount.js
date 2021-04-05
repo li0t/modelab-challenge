@@ -30,12 +30,13 @@ export default function getBestDiscount(discountsList, products) {
     const brandSubtotal = getProductsSubtotal(brandProducts);
 
     const meetsThreshold = brandSubtotal >= discount.threshold;
+    const isBetterAlternative = discount.amount > discountAlternative.amount;
 
     if (meetsThreshold) {
       bestDiscount.brand = discount.brand;
       bestDiscount.amount = discount.amount;
       bestDiscount.threshold = discount.threshold;
-    } else {
+    } else if (isBetterAlternative) {
       discountAlternative.brand = discount.brand;
       discountAlternative.amount = discount.amount;
       discountAlternative.threshold = discount.threshold;
