@@ -85,7 +85,7 @@ es:
       
     .total.item
       div 
-        span {{ $t('TOTAL') }}
+        span.bold {{ $t('TOTAL') }}
         span.right.bold {{ formatNumber(total) }}
  
 </template>
