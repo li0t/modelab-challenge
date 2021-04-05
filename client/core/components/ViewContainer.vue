@@ -16,5 +16,6 @@ main.ui.fluid.container
   flex: 1
   min-height: 90vh
   max-height: 90vh
+  background-color: #F5F5F5
 </style>
 
