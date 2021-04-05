@@ -17,12 +17,14 @@ export default {
     return {
       discountAlternative: {
         brand: null,
+        threshold: 0,
         missing: 0,
         amount: 0
       },
 
       discount: {
         brand: null,
+        threshold: 0,
         amount: 0
       },
 
