@@ -1,6 +1,8 @@
 const buildSearchRegex = require('../search-regex');
 const faker = require('faker');
 
+const { expect } = require('chai');
+
 describe('SEARCH REGEX SHARED SERVICE', () => {
   describe('[Build regex query]', () => {
     it('should build a mongo regex query object with default flags', async () => {
