@@ -10,12 +10,12 @@ es:
   :class="{ loading: fetching}"
   )
 
-  .products.ui.cards
+  .products.ui.four.cards
   
     product(
       v-for="product in products"
       :product="product"
-      :key="product.id"
+      :key="product._id"
       )
  
 </template>
@@ -55,7 +55,7 @@ export default {
     async fetchProducts() {
       this.fetching = true;
 
-      const res = await this.$http.get(`/products`);
+      const res = await this.$http.get(`/products?limit=0`);
 
       this.products = res.data;
 
