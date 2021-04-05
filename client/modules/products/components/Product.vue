@@ -34,19 +34,20 @@ es:
         )
         | {{ $t('ADD_TO_CART')}}
 
-      .buttons.edit-buttons(
+      .ui.icon.small.buttons.edit-buttons(
         v-else
         )
 
-        button.ui.icon.button(
+        button.ui.button.minus-button(
           @click="updateQty(cartProductQty - 1)"
           )
           i.fas.fa-minus.icon
 
 
-        .counter {{ cartProductQty }}
+        button.ui.button.product-qty
+          | {{ cartProductQty }}
 
-        button.ui.button(
+        button.ui.button.plus-button(
           @click="updateQty(cartProductQty + 1)"
           )
           i.fas.fa-plus.icon
@@ -132,7 +133,32 @@ export default {
     .actions
       margin-top: .5em
 
+      button
+        color: #2185d0
+        background-color: white
+
       .push-product
+        box-shadow: 0px 0px 3px grey
         border-radius: 50px
         padding: .65em 3em
+      
+      .edit-buttons
+        box-shadow: 0px 0px 3px grey
+        border-radius: 50px
+        
+        .button
+          padding-top: .65em
+          padding-bottom: .65em
+
+        .minus-button
+          border-radius: 50px 0 0 50px
+        
+        .plus-button
+          border-radius: 0 50px 50px 0 
+        
+        .product-qty
+          cursor: pointer
+          background-color: #F5F5F5
+          width: 70px
+
 </style>
