@@ -12,7 +12,9 @@ export default {
 <style lang="sass" scoped>
 main.ui.fluid.container
   overflow-y: scroll
-  padding: 1rem
+  padding: 1em 5em
   flex: 1
+  min-height: 90vh
+  max-height: 90vh
 </style>
 
