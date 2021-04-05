@@ -8,26 +8,27 @@ es:
 
 <template lang="pug">
 .product.ui.card
-  .image
+  .small.image
     img(:src="`https://${product.image}`")
 
   .content
     .description 
-      .span.brand {{ product.brand }}
-      | {{ product.description }}
+      span
+        span.brand {{ `${product.brand} ` }}
+        span {{ product.description }}
       
-    .price {{ product.price }}
+    .price {{ `$${product.price.toLocaleString('es')}` }}
 
-    .labels.delivery
-      .blue.icon.label 
+    .ui.small.icon.labels
+      .ui.blue.basic.label 
         i.fas.fa-truck.icon
         | {{ $t('DELIVERY')}}
-      .orange.icon.label
+      .ui.orange.basic.label
         i.fas.fa-warehouse.icon
         | {{ $t('PICKUP')}}
 
-    .actions
-      button.push-product.button(
+    .actions.center.aligned
+      button.ui.push-product.small.button(
         v-if="cartProductQty === 0"
         @click="addProduct(product)"
         )
@@ -37,7 +38,7 @@ es:
         v-else
         )
 
-        button.icon.button(
+        button.ui.icon.button(
           @click="updateQty(cartProductQty - 1)"
           )
           i.fas.fa-minus.icon
@@ -45,7 +46,7 @@ es:
 
         .counter {{ cartProductQty }}
 
-        button.button(
+        button.ui.button(
           @click="updateQty(cartProductQty + 1)"
           )
           i.fas.fa-plus.icon
@@ -105,3 +106,33 @@ export default {
   }
 };
 </script>
+<style lang="sass" scoped>
+.product.ui.card
+  width: 250px
+
+  .content
+    height: 180px
+    
+    .description
+      height: 25%
+      .brand
+        font-weight: bold
+        color: black
+
+    .price 
+      font-size: 1.35em;
+      font-weight: bold;
+
+    .labels
+      margin-top: 2em
+      .label
+        padding: .5em 1em
+        border-radius: 50px
+            
+    .actions
+      margin-top: .5em
+
+      .push-product
+        border-radius: 50px
+        padding: .65em 3em
+</style>
