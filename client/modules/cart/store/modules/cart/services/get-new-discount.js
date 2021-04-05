@@ -9,10 +9,11 @@
  * @param {Object} discount A discount object.
  * @returns {Object} A new cart discount.
  */
-export default function getNewDiscount(discount={}) {
+export default function getNewDiscount(discount = {}) {
   return {
     threshold: discount.threshold || 0,
     amount: discount.discount || 0,
-    brand: discount.brand || ''
+    brand: discount.brand || '',
+    missing: 0
   };
 }
