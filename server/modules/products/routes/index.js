@@ -1,7 +1,4 @@
-const getQuerySort = require('../../../shared/services/get-query-sort');
-const getBrandsQueries = require('../services/get-brands-queries');
-const buildSearch = require('../services/search');
-const SORT_PARAMS = ['name'];
+const getProductsQuery = require('../services/get-products-query');
 
 module.exports = (router, mongoose) => {
   const Product = mongoose.model('product');
@@ -9,17 +6,11 @@ module.exports = (router, mongoose) => {
   router.get('/api/products/count', async (req, res, next) => {
     try {
       const query = Product.countDocuments().skip(req.query.skip);
-      
-      if (req.query.text) {
-        const search = buildSearch(req.query.text);
 
-        query.or(search);
-      }
+      const productsQuery = getProductsQuery(req.query.text, req.query.brands);
 
-      if (req.query.brands) {
-        const brandsQueries = getBrandsQueries(req.query.brands);
-
-        query.or(brandsQueries);
+      if (productsQuery) {
+        query.where(productsQuery);
       }
 
       const counted = await query;
@@ -31,25 +22,17 @@ module.exports = (router, mongoose) => {
   });
 
   router.get('/api/products', async (req, res, next) => {
-    const sort = getQuerySort(req, SORT_PARAMS);
     try {
       const query = Product.find()
-        .sort(sort)
 
         .skip(req.query.skip)
 
         .limit(req.query.limit);
 
-      if (req.query.text) {
-        const search = buildSearch(req.query.text);
+      const productsQuery = getProductsQuery(req.query.text, req.query.brands);
 
-        query.or(search);
-      }
-
-      if (req.query.brands) {
-        const brandsQueries = getBrandsQueries(req.query.brands);
-
-        query.or(brandsQueries);
+      if (productsQuery) {
+        query.where(productsQuery);
       }
 
       const products = await query;
