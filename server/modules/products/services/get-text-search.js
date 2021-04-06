@@ -1,7 +1,7 @@
 const buildSearchRegEx = require('../../../shared/services/search-regex');
 
-module.exports = function buildSearch(text) {
+module.exports = function getTextSearch(text) {
   const regex = buildSearchRegEx(text);
 
-  return [{ description: regex }];
+  return { description: regex };
 };
