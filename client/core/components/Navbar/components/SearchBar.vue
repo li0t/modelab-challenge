@@ -8,12 +8,14 @@ es:
 </i18n>
 
 <template lang="pug">
-.ui.input
-  input(
-    type="text"
-    @change="updateSearchText($event.target.value || '')"
-    @keyup.enter="search()"
-    )
+.search-bar.item
+  .ui.icon.input
+    input(
+      type="text"
+      @change="updateSearchText($event.target.value || '')"
+      @keyup.enter="search()"
+      )
+    i.fas.fa-search.icon
   
 </template>
 
@@ -52,4 +54,7 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
+.search-bar
+  width: 50vw
+  margin: 0 8vw
 </style>
