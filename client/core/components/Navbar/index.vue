@@ -1,7 +1,7 @@
 <template lang="pug">
 #navbar.ui.top.fixed.menu.attached
   navbar-logo
-  navbar-menu
+  search-bar
   
   .right.menu
     cart-icon
@@ -10,16 +10,16 @@
 
 <script>
 import CartIcon from '@/modules/cart/components/CartIcon';
-import NavbarMenu from './components/NavbarMenu';
 import NavbarLogo from './components/NavbarLogo';
+import SearchBar from './components/SearchBar';
 
 export default {
   name: 'TheNavbar',
 
   components: {
-    NavbarMenu,
     NavbarLogo,
-    CartIcon
+    SearchBar,
+    CartIcon,
   }
 };
 </script>
