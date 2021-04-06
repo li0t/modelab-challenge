@@ -2,9 +2,7 @@
 #navbar.ui.top.fixed.menu.attached
   navbar-logo
   search-bar
-  
-  .right.menu
-    cart-icon
+  cart-icon
 
 </template>
 
@@ -30,6 +28,8 @@ export default {
   position: static
   z-index: 103
   flex: 0
+  display: flex
+  justify-content: center
   min-height: 6vh
   max-height: 6vh
   border-bottom: 0
