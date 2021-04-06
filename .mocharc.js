@@ -11,6 +11,9 @@ module.exports = {
   slow: 75,
   timeout: 100000,
   ui: 'bdd',
-  spec: 'server/**/*.spec.js',
-  file: 'server/core/services/test'
+  type: 'module',
+  require: 'esm',
+  ignore: ['client/semantic/*'],
+  spec: ['server/**/*.spec.js', 'client/**/*.spec.js'],
+  file: 'test'
 };
