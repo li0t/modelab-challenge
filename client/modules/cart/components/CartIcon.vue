@@ -5,7 +5,7 @@ es:
 </i18n>
 
 <template lang="pug">
-.cart-icon.link.item(
+.cart-icon.link.item#cart-icon(
   @click="$$('.cart-sidebar').sidebar('show')"
   )
   i.fas.fa-shopping-cart.icon
@@ -51,10 +51,13 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
-.cart-icon.link.item
+#cart-icon.link.item
+  border-radius: 2px!important
   background-color: #0e3d69
 
   .icon
+    margin-right: 0
+    margin-left: -2px
     color: #F7BF16
     font-size: 1.5em
 
