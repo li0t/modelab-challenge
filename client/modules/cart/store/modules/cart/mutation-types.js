@@ -3,7 +3,6 @@
  */
 
 
-// Sync
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 export const UPDATE_PROD_QTY = 'UPDATE_PROD_QTY';
