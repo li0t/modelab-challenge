@@ -68,9 +68,12 @@ es:
 
 <script>
 import Product from '../components/Product';
+import MT from '@/store/mutation-types';
 
-import { mapModuleActions, mapModuleState } from '@/shared/services/map-store-module';
+import { mapModuleState, mapModuleActions, mapModuleMutations } from '@/shared/services/map-store-module';
+import { moduleName as productsModuleName } from '@/modules/products/store/modules/products';
 import { moduleName as discountsModuleName } from '@/modules/cart/store/modules/discounts';
+import { moduleName as searchBarModuleName } from '@/shared/store/modules/search-bar';
 
 export default {
   name: 'ProductsIndex',
@@ -81,20 +84,22 @@ export default {
 
   data() {
     return {
-      remainingProducts: 0,
-      
-      fetching: false,
-
-      brandsFilters: [],
-      products: [],
-      brands: [],
-      limit: 10,
-      page: 1
+      brands: []
     };
   },
 
   computed: {
-    ...mapModuleState(discountsModuleName, ['discounts'])
+    ...mapModuleState(searchBarModuleName, ['searchText']),
+    ...mapModuleState(discountsModuleName, ['discounts']),
+
+    ...mapModuleState(productsModuleName, [
+      'remainingProducts',
+      'brandsFilters',
+      'fetching',
+      'products',
+      'limit',
+      'page'
+    ])
   },
 
   async created() {
@@ -106,25 +111,32 @@ export default {
   methods: {
     ...mapModuleActions(discountsModuleName, ['fetchDiscounts']),
 
-    paginate() {
-      this.page += 1;
-      this.fetchProducts();
+    ...mapModuleActions(productsModuleName, ['fetchProducts', 'reset']),
+
+    ...mapModuleMutations(productsModuleName, {
+      spliceBrandFilter: MT.SPLICE_BRAND_FILTER,
+      pushBrandFilter: MT.PUSH_BRAND_FILTER
+    }),
+
+    ...mapModuleMutations(productsModuleName, {
+      spliceBrandFilter: MT.SPLICE_BRAND_FILTER,
+      pushBrandFilter: MT.PUSH_BRAND_FILTER
+    }),
+
+    async paginate() {
+      this.updatePage(this.page + 1);
+      await this.fetchProducts();
     },
 
-    reset() {
-      this.page = 1;
-      this.products = [];
+    async applyFilters() {
+      await this.reset();
+      await this.fetchProducts();
     },
 
-    applyFilters() {
-      this.reset();
-      this.fetchProducts();
-    },
-
-    resetFilters() {
-      this.reset();
+    async resetFilters() {
       this.$$('.ui.checkbox').checkbox('uncheck');
-      this.fetchProducts();
+      await this.reset();
+      await this.fetchProducts();
     },
 
     toggleBrandFilter(brand) {
@@ -134,8 +146,9 @@ export default {
 
       if (index >= 0) {
         brandsFilters.splice(index, 1);
+        this.spliceBrandFilter(index);
       } else {
-        brandsFilters.push(brand);
+        this.pushBrandFilter(brand);
       }
     },
 
@@ -157,34 +170,6 @@ export default {
       brands.sort((brand1, brand2) => (brand1.name > brand2.name ? 1 : -1));
 
       this.brands = brands;
-    },
-
-    getProductsQuery(page) {
-      let query = `limit=${this.limit}&page=${page}`;
-
-      for (const brand of this.brandsFilters) {
-        query += `&brands=${brand}`;
-      }
-
-      return query;
-    },
-
-    async fetchProducts() {
-      this.fetching = true;
-
-      let query = this.getProductsQuery(this.page);
-      let res = await this.$http.get(`/products?${query}`);
-
-      this.products.push(...res.data);
-
-      query = this.getProductsQuery(this.page + 1);
-      res = await this.$http.get(`/products/count?${query}`);
-
-      this.remainingProducts = res.data;
-
-      
-
-      this.fetching = false;
     }
   }
 };
