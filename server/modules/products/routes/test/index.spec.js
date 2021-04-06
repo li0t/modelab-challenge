@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const path = require('path');
 
-const utilsPath = path.join(process.cwd(), 'server', 'core', 'services', 'test', 'utils');
+const testServices = path.join(process.cwd(), 'test', 'services');
 
 const { expect } = require('chai');
 
@@ -9,7 +9,7 @@ let req;
 
 describe('PRODUCTS API', () => {
   before(async () => {
-    req = await require(path.join(utilsPath, 'req'))();
+    req = await require(path.join(testServices, 'req'))();
   });
 
   describe('[GET /products]', () => {
@@ -49,8 +49,6 @@ describe('PRODUCTS API', () => {
 
       expect(res.statusCode).to.equal(200);
       expect(res.body).to.be.an('array');
-
-      console.log(text)
 
       const found = !!res.body.find(f => f.description === product.description);
 

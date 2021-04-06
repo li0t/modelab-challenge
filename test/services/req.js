@@ -1,3 +1,9 @@
+/**
+ * Test index.
+ *
+ * @module test
+ */
+
 const chaiHttp = require('chai-http');
 const path = require('path');
 const chai = require('chai');

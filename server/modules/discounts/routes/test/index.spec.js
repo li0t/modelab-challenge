@@ -1,6 +1,6 @@
 const path = require('path');
 
-const utilsPath = path.join(process.cwd(), 'server', 'core', 'services', 'test', 'utils');
+const testServices = path.join(process.cwd(), 'test', 'services');
 
 const { expect } = require('chai');
 
@@ -8,7 +8,7 @@ let req;
 
 describe('PRODUCTS API', () => {
   before(async () => {
-    req = await require(path.join(utilsPath, 'req'))();
+    req = await require(path.join(testServices, 'req'))();
   });
 
   describe('[GET /discounts]', () => {
