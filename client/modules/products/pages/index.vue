@@ -120,7 +120,8 @@ export default {
 
     ...mapModuleMutations(productsModuleName, {
       spliceBrandFilter: MT.SPLICE_BRAND_FILTER,
-      pushBrandFilter: MT.PUSH_BRAND_FILTER
+      pushBrandFilter: MT.PUSH_BRAND_FILTER,
+      updatePage: MT.UPDATE_PAGE
     }),
 
     async paginate() {
@@ -145,7 +146,6 @@ export default {
       const index = brandsFilters.indexOf(brand);
 
       if (index >= 0) {
-        brandsFilters.splice(index, 1);
         this.spliceBrandFilter(index);
       } else {
         this.pushBrandFilter(brand);
