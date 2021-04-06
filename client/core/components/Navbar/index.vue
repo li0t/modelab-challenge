@@ -30,10 +30,8 @@ export default {
   position: static
   z-index: 103
   flex: 0
-  min-height: 5vh
-  max-height: 5vh
+  min-height: 6vh
+  max-height: 6vh
   border-bottom: 0
-
-  .right.menu
-    padding-right: 100px
+  padding: .5em 100px .5em 80px
 </style>

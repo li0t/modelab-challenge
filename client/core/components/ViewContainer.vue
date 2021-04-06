@@ -14,8 +14,8 @@ main.ui.fluid.container
   overflow-y: scroll
   padding: 1em 5em
   flex: 1
-  min-height: 90vh
-  max-height: 90vh
+  min-height: 89vh
+  max-height: 89vh
   background-color: #F5F5F5
 </style>
 
