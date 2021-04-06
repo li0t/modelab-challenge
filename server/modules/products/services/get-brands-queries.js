@@ -21,7 +21,7 @@ function getBrandsQueries(brandsNames) {
       });
     }
   }
-  console.log(queries);
+  
   return queries;
 }
 
