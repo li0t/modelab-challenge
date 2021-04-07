@@ -1,4 +1,6 @@
 # Desafío wallmart
+[![codecov](https://codecov.io/gh/li0t/modelab-challenge/branch/main/graph/badge.svg?token=6R52ITOUL9)](https://codecov.io/gh/li0t/modelab-challenge)
+
 El desafío fue resuelto con el stack MEVN, con una arquitectura modular tanto para el cliente como para el servidor. 
 
 
