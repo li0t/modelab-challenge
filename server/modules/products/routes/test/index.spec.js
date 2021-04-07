@@ -33,7 +33,7 @@ describe('PRODUCTS API', () => {
       }
     });
 
-    it('should find products by a text search', async () => {
+    it('should count products by a text search', async () => {
       const product = await mongoose
         .model('product')
         .findOne()
@@ -45,7 +45,36 @@ describe('PRODUCTS API', () => {
 
       const text = description.join('');
 
-      const res = await req.get(`/api/products?text=${text}`);
+      const res = await req.get(`/api/products/count?text=${text}`);
+
+      expect(res.statusCode).to.equal(200);
+      expect(res.body).to.be.a('number');
+      expect(res.body > 0).to.be.true;
+    });
+
+
+    it('should count products by a brand', async () => {
+      const product = await mongoose
+        .model('product')
+        .findOne()
+
+        .lean();
+
+      const res = await req.get(`/api/products/count?brands=${product.brand}`);
+
+      expect(res.statusCode).to.equal(200);
+      expect(res.body).to.be.a('number');
+      expect(res.body > 0).to.be.true;
+    });
+
+    it('should find products by a text search', async () => {
+      const product = await mongoose
+        .model('product')
+        .findOne()
+
+        .lean();
+
+      const res = await req.get(`/api/products?brands=${product.brand}`);
 
       expect(res.statusCode).to.equal(200);
       expect(res.body).to.be.an('array');
