@@ -2,7 +2,7 @@
  * @module cart/store/modules/cart/services/get-products-discounts
  */
 
-import getNewDiscount from "./get-new-discount";
+import getNewDiscount from './get-new-discount';
 
 /**
  * Filters the brands discounts present in the products list.
@@ -17,6 +17,7 @@ export default function getProductsDiscounts(discountsList, products) {
   for (const discount of discountsList) {
     const exists = products.find(product => product.brand === discount.brand);
 
+    /* istanbul ignore else */
     if (exists) {
       const newDiscount = getNewDiscount(discount);
 
