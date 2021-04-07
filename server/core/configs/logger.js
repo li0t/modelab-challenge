@@ -1,3 +1,4 @@
+/* istanbul ignore if */
 if (['production', 'staging'].includes(process.env.NODE_ENV)) {
   module.exports = ':date[iso] :method :url :status';
 } else {

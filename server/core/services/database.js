@@ -7,7 +7,7 @@ module.exports = async () => {
     await mongoose.connect(config.uri, config.options);
 
     console.log('Database successfully connected!');
-  } catch (err) {
+  } catch (err) /* istanbul ignore next */ {
     console.log("Couldn't connect to database!");
     console.error(err);
   }

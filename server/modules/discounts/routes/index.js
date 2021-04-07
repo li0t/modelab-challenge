@@ -8,7 +8,7 @@ module.exports = (router, mongoose) => {
       const counted = await query;
 
       res.json(counted);
-    } catch (error) {
+    } catch (error)  /* istanbul ignore next */{
       next(error);
     }
   });
@@ -24,7 +24,7 @@ module.exports = (router, mongoose) => {
       const discounts = await query;
 
       res.send(discounts);
-    } catch (error) {
+    } catch (error)  /* istanbul ignore next */{
       next(error);
     }
   });

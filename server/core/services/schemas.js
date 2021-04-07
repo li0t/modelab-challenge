@@ -26,6 +26,7 @@ module.exports = () => {
 
     const schema = require(filename);
 
+    /* istanbul ignore next */
     if (is.func(schema)) {
       const schemaDefinition = schema(mongoose.Schema);
 

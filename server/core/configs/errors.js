@@ -33,7 +33,8 @@ module.exports = {
 
   // Function to use for debugging
   debug: !TESTING
-    ? err => {
+    ? /* istanbul ignore next */
+      err => {
         console.log('START ERROR LOG:', new Date());
         console.log(err);
         console.log('END ERROR LOG:', new Date());

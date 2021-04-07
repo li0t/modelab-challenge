@@ -23,6 +23,7 @@ module.exports = app => {
     spinner.succeed(view);
   }
 
+  /* istanbul ignore next */
   app.get(views, (req, res) => {
     if (process.env.NODE_ENV === 'testing') {
       res.end();

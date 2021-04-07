@@ -9,6 +9,7 @@ const http = require('http');
 const path = require('path');
 const is = require('@fiquu/is');
 
+/* istanbul ignore next */
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 const TESTING = process.env.NODE_ENV === 'testing';
@@ -45,9 +46,12 @@ module.exports = (async function() {
   errors.config(configs.errors);
 
   app.use(favicon(configs.favicon));
+
+  /* istanbul ignore if */
   if (!TESTING) {
     app.use(logger(configs.logger)); // Logger shouldn't have to log favicon calls
   }
+  
   app.use(express.static(configs.statics));
   app.use(bodyParser.json({ limit: '10mb' }));
   app.use(

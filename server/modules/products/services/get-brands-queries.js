@@ -10,7 +10,9 @@ function getBrandsQueries(brandsNames) {
   let brands = brandsNames;
   const queries = [];
 
+  /* istanbul ignore else */
   if (brands) {
+    /* istanbul ignore else */
     if (!is.array(brands)) {
       brands = [brands];
     }
@@ -21,7 +23,7 @@ function getBrandsQueries(brandsNames) {
       });
     }
   }
-  
+
   return queries;
 }
 
