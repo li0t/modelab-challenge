@@ -6,12 +6,14 @@ const { expect } = require('chai');
 
 describe('Cart service', () => {
   describe('getBestDiscount', () => {
-    it('should return the bestDiscount and the discountAlternative', async () => {
+    it('should choose the bestDiscount', async () => {
       const { products, discounts } = getTestDiscounts();
+
+      const discountWithHighestAmout = discounts[0];
 
       const { discountAlternative, bestDiscount } = getBestDiscount(discounts, products);
 
-      expect(bestDiscount.brand).to.be.equals(discounts[0].brand);
+      expect(bestDiscount.brand).to.be.equals(discountWithHighestAmout.brand);
       expect(discountAlternative.brand).to.be.null;
     });
   });
