@@ -22,7 +22,7 @@
     "dev": "pm2 start ecosystem.config.js --env development && pm2 logs postulacion-modelab",
     "production": "bash run.sh",
     "test": "NODE_ENV=testing mocha",
-    "coverage": "NODE_ENV=testing nyc mocha",
+    "coverage": "NODE_ENV=testing nyc --reporter=lcov mocha",
     "coverage-badge": "CODECOV_TOKEN='5245e764-6842-4c73-a147-fb1370de40f4' npm run coverage && codecov",
     "preversion": "npm run coverage",
     "postversion": "git push --follow-tags",
