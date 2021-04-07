@@ -20,7 +20,7 @@
   "scripts": {
     "build": "vue-cli-service build && docker build -t li0t/modelab-challenge .",
     "dev": "pm2 start ecosystem.config.js --env development && pm2 logs postulacion-modelab",
-    "production": "docker run -d --link mongodb-local:mongodb-local -p 49300:49300  --name modelab-challenge li0t/modelab-challenge",
+    "production": "bash run.sh",
     "test": "NODE_ENV=testing mocha",
     "coverage": "NODE_ENV=testing nyc mocha",
     "preversion": "npm run coverage",
