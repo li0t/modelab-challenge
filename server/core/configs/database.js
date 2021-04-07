@@ -3,6 +3,7 @@ module.exports = {
   options: {
     user: process.env.DB_USER,
     pass: process.env.DB_PASSWORD,
+    authSource: process.env.DB_AUTH,
     useNewUrlParser: true,
     autoIndex: false
   }
