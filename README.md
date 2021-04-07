@@ -19,8 +19,8 @@ Para habilitar un ambiente de producción son necesarios los siguientes pasos:
 
 1. Instalar docker@latest
 2. Correr el script _database-up_ provisto en el desafío, o en su defecto cargar una imagen de mongo en el puerto por defecto, con el nombre mongodb-local y cargar los datos de prueba
-3. Cargar la imagen la app provista en este repositorio con el nombre de modelab-challenge-image.tar
-4. Inicializar la imagen con el script _run.sh_ 
+3. Cargar la imagen de la app (provista por medios externos o creada en un ambiente de desarrollo)
+4. Inicializar la imagen con las instrucciones del script _run.sh_ 
 5. (Opcional) Redirigir el puerto 49300 al puerto 80
 
 ## Ambiente de pruebas
